@@ -27,3 +27,8 @@ readFile(filePath, "utf8")
   .catch((error) => {
     console.error(`Error reading file from disk: ${error}`);
   });
+
+// read from text
+// const input = await text(process.stdin)
+const input = await text("yes hello this is dog");
+console.log(input);
