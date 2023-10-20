@@ -24,42 +24,20 @@
 > Q: is it accurate regarding web streams in node: a ReadableStream's pull operation will only run to fill the queue once the promise is resolved
 > A: Yes, your understanding is accurate. In the Web Streams API, the `pull()` method is invoked by a `ReadableStream` whenever its internal data queue isn't full, and more data is needed. If the `pull()` method returns a promise, it won't be called again until the promise is resolved. This mechanism provides a natural backpressure model, preventing consumers from reading data from the source faster than it's available【8†source】.
 
-- utility function for pulling (downloading) data into a web stream queue
-```js
-// utils.mjs
-export function getSomeSource() {
-  let count = 0;
-  const  maxCount = 5;
-  return {
-    start(controller) {
-    },
-    pull(controller) {
-      if(count < maxCount) {
-        controller.enqueue(`some data; count: ${count}`);
-        count++;
-      } else {
-        controller.close();
-      }
-    },
-    cancel(reason) {
-    }
-  };
-}
-```
 
-- converting a web stream to node stream and reading it in node
+#### Web Stream to Node Stream Conversion 
 ```js
 import {
   Readable
-} from 'node:stream'; 
+} from 'node:stream';
 import {getSomeSource} from "./utils.mjs"; 
-const readable = new ReadableStream(getSomeSource()); // web stream 
-const nodeReadable = Readable.fromWeb(readable); // convert web stream to node  stream
+const readable = new ReadableStream(getSomeSource()); // web stream
+const nodeReadable = Readable.fromWeb(readable); // convert web stream to node stream
 nodeReadable.on('data', console.log); 
 ```
 
 
-- converting a node stream to web stream and reading it (in node)
+#### Node Stream to Web Stream Conversion
 ```js
 import { Readable } from 'node:stream';
 const readable = new Readable({
@@ -72,3 +50,4 @@ const reader = readableStream.getReader();
 const result = await reader.read();
 console.log(result.value.toString());
 ```
+
