@@ -1,5 +1,7 @@
 - [jasnell web streams in node](https://www.jasnell.me/posts/webstreams)
 - [web.dev/streams](https://web.dev/articles/streams)
+- [node.js design patterns js-stream-consumer](https://www.nodejsdesignpatterns.com/blog/node-js-stream-consumer/)
+- [node stream consumers](https://nodejs.org/api/webstreams.html#streamconsumersjsonstream)
 - [codesandbox](https://codesandbox.io/p/sandbox/interesting-parm-76dd5y)
 - [stackblitz](https://stackblitz.com/~/github.com/bronifty/jasnell-webstreams)
 
@@ -50,4 +52,7 @@ const reader = readableStream.getReader();
 const result = await reader.read();
 console.log(result.value.toString());
 ```
+
+- research: Adapters for WritableStream to stream.Writable, and TransformStream to stream.Transform are also available.
+
 

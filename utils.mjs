@@ -1,3 +1,15 @@
+import { ReadableStream } from 'node:stream/web';
+
+export async function getReadableStreamSomehow() {
+  return new Promise.resolve(ReadableStream({
+    start(controller) {
+      setInterval(() => {
+        controller.enqueue(Math.random());
+      }, 1000);
+    }
+  }))
+}
+
 export function getSomeSource() {
   let count = 0;
   const  maxCount = 5;
