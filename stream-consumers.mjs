@@ -29,6 +29,6 @@ readFile(filePath, "utf8")
   });
 
 // read from text
-// const input = await text(process.stdin)
-const input = await text("yes hello this is dog");
+// const input = await text("yes hello this is dog");
+const input = await text(process.stdin);
 console.log(input);
