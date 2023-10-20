@@ -12,6 +12,8 @@
 
 #### Read Source Transform Write to Sink with Node:Stream/Web
 
+- [transform](./transform-node-stream-web.mjs)
+
 ```js
 (async () => {
   const readable = new ReadableStream(getSomeSource());
@@ -27,6 +29,8 @@
 
 #### Web Stream to Node Stream Conversion
 
+- [web to node](./web-to-node-stream.mjs)
+
 ```js
 import { Readable } from "node:stream";
 import { getSomeSource } from "./utils.mjs";
@@ -36,6 +40,8 @@ nodeReadable.on("data", console.log);
 ```
 
 #### Node Stream to Web Stream Conversion
+
+- [node to web](./node-to-web-stream.mjs)
 
 ```js
 import { Readable } from "node:stream";
@@ -82,6 +88,8 @@ readStream();
 
 ##### Automatic Way
 
+- [consumers](./stream-consumers.mjs)
+
 ```js
 // Create a readable stream from the mobydick.txt file
 const mobyDickReadTextStream = createReadStream(
@@ -97,6 +105,7 @@ consumerReadStream();
 
 ##### Reference Stream Consumers
 
+- [reference](./jasnell-node-lib-stream-consumers.js)
 - [node core consumers](https://github.com/nodejs/node/blob/main/lib/stream/consumers.js)
 - [local stream-consumers](./jasnell-node-lib-stream-consumers.js)
 - the blob and text convenience methods from James' script in node core
