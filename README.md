@@ -19,7 +19,6 @@
   const transform = new TransformStream(getSomeTransform());
   await readable.pipeThrough(transform).pipeTo(writable);
 })();
-
 ```
 
 > Checkpoint AI
