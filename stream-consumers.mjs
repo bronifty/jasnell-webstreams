@@ -6,7 +6,7 @@ import { __dirname } from "./utils.mjs";
 
 // read the image file
 const readable = createReadStream(path.join(__dirname, "wing.png"));
-const data = await blob(readable);
+const data = await arrayBuffer(readable);
 console.log(data);
 
 // reading json from https endpoint (does not work locally)
@@ -30,5 +30,5 @@ readFile(filePath, "utf8")
 
 // read from text
 // const input = await text("yes hello this is dog");
-const input = await text(process.stdin);
-console.log(input);
+const input = await text(process.stdin); // cat mobydick.txt | node stream-consumers.mjs
+console.log(input); // this will hang if there is no stdin
